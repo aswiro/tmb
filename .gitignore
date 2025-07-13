@@ -12,8 +12,3 @@ wheels/
 
 # Log files
 *.log
-
-# AI Rules
-user_rules.md
-tasks/
-.trae/
