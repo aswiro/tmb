@@ -1,8 +1,15 @@
-from .db_main import Database
+# database/__init__.py
+"""Модуль для работы с базой данных.
 
+Этот модуль содержит все компоненты для работы с базой данных:
+- Модели данных
+- Репозитории для доступа к данным
+- Сервисы для бизнес-логики
+- Утилиты для управления базой данных
+"""
 
-_db = Database()
-Base = _db.Base
+from .db_main import database
+from .repository import BaseRepository
+from .unit_of_work import UnitOfWork
 
-
-__all__ = ["_db", "Base"]
+__all__ = ["database", "BaseRepository", "UnitOfWork"]

@@ -1,556 +1,276 @@
-# database/repository.py
-"""
-Repository Pattern - базовые CRUD операции и репозитории для всех моделей
+# repository.py - базовый репозиторий для работы с данными
+"""Базовый репозиторий для работы с данными.
+
+Этот модуль содержит базовый класс Repository, который предоставляет
+стандартные методы для работы с данными (CRUD операции).
 """
 
-from abc import ABC
-from typing import Any, Generic, TypeVar
+from typing import Any, Dict, Generic, List, Optional, Type, TypeVar
 
-from sqlalchemy import and_, select, update
+from loguru import logger
+from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import DeclarativeBase, joinedload
+from sqlalchemy.orm import DeclarativeBase
 
-from .models import (
-    AdAnalytics,
-    AdCampaign,
-    AdCampaignStatus,
-    AdCreative,
-    AdCreativeStatus,
-    AdminPost,
-    AdPlacement,
-    Advertiser,
-    CaptchaSession,
-    CaptchaSetting,
-    FilterRule,
-    Group,
-    GroupMember,
-    MemberStatus,
-    Poll,
-    PollOption,
-    PostStatus,
-    PublishedPost,
-    Transaction,
-    User,
-)
+# Типы для Generic репозитория
+ModelType = TypeVar("ModelType", bound=DeclarativeBase)
+CreateSchemaType = TypeVar("CreateSchemaType")
+UpdateSchemaType = TypeVar("UpdateSchemaType")
 
 
-T = TypeVar("T", bound=DeclarativeBase)
-
-
-class BaseRepository(ABC, Generic[T]):  # noqa: UP046
-    """Базовый репозиторий - только CRUD операции"""
-
-    def __init__(self, session: AsyncSession, model_class: type[T]):
+class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
+    """Базовый репозиторий для работы с моделями.
+    
+    Предоставляет стандартные CRUD операции:
+    - create: создание записи
+    - get: получение записи по ID
+    - get_multi: получение нескольких записей
+    - update: обновление записи
+    - delete: удаление записи
+    
+    Args:
+        model: Класс модели SQLAlchemy
+        session: Сессия базы данных
+    """
+    
+    def __init__(self, model: Type[ModelType], session: AsyncSession):
+        self.model = model
         self.session = session
-        self.model_class = model_class
-
-    async def get_by_id(self, id: Any) -> T | None:  # noqa: A002
-        """Получение по ID"""
-        stmt = select(self.model_class).where(self.model_class.id == id)
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_many(self, ids: list[Any]) -> list[T]:
-        """Получение нескольких записей по ID"""
-        stmt = select(self.model_class).where(self.model_class.id.in_(ids))
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def create(self, **kwargs) -> T:
-        """Создание новой записи"""
-        instance = self.model_class(**kwargs)
-        self.session.add(instance)
-        await self.session.flush()
-        return instance
-
-    async def update(self, instance: T, **kwargs) -> T:
-        """Обновление существующей записи"""
-        for key, value in kwargs.items():
-            if hasattr(instance, key):
-                setattr(instance, key, value)
-        await self.session.flush()
-        return instance
-
-    async def delete(self, instance: T) -> None:
-        """Удаление записи"""
-        self.session.delete(instance)
-        await self.session.flush()
-
-    async def get_all(self) -> list[T]:
-        """Получение всех записей"""
-        stmt = select(self.model_class)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-# Репозитории для основных моделей
-class FilterRuleRepository(BaseRepository[FilterRule]):
-    """Репозиторий для работы с правилами фильтров"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, FilterRule)
-
-    async def get_by_group_id(self, group_id: int) -> FilterRule | None:
-        """Получение правил фильтра по ID группы"""
-        stmt = select(FilterRule).where(FilterRule.id == group_id)
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def update_by_column_name(
-        self, group_id: int, column_name: str, value: Any
-    ) -> bool:
-        """Обновление правила фильтра по названию колонки в группе"""
-        if not hasattr(FilterRule, column_name):
+    
+    async def create(self, obj_in: CreateSchemaType) -> ModelType:
+        """Создает новую запись в базе данных.
+        
+        Args:
+            obj_in: Данные для создания записи
+            
+        Returns:
+            Созданная запись
+        """
+        try:
+            # Если obj_in это Pydantic модель, конвертируем в dict
+            if hasattr(obj_in, 'model_dump'):
+                obj_data = obj_in.model_dump()
+            elif hasattr(obj_in, 'dict'):
+                obj_data = obj_in.dict()
+            else:
+                obj_data = obj_in
+            
+            db_obj = self.model(**obj_data)
+            self.session.add(db_obj)
+            await self.session.commit()
+            await self.session.refresh(db_obj)
+            
+            logger.debug(f"Создана запись {self.model.__name__} с ID: {getattr(db_obj, 'id', 'N/A')}")
+            return db_obj
+            
+        except Exception as e:
+            await self.session.rollback()
+            logger.error(f"Ошибка при создании {self.model.__name__}: {e}")
+            raise
+    
+    async def get(self, id: Any) -> Optional[ModelType]:
+        """Получает запись по ID.
+        
+        Args:
+            id: Идентификатор записи
+            
+        Returns:
+            Найденная запись или None
+        """
+        try:
+            stmt = select(self.model).where(self.model.id == id)
+            result = await self.session.execute(stmt)
+            return result.scalar_one_or_none()
+            
+        except Exception as e:
+            logger.error(f"Ошибка при получении {self.model.__name__} с ID {id}: {e}")
+            raise
+    
+    async def get_multi(
+        self, 
+        skip: int = 0, 
+        limit: int = 100,
+        **filters
+    ) -> List[ModelType]:
+        """Получает несколько записей с пагинацией и фильтрацией.
+        
+        Args:
+            skip: Количество записей для пропуска
+            limit: Максимальное количество записей
+            **filters: Дополнительные фильтры
+            
+        Returns:
+            Список найденных записей
+        """
+        try:
+            stmt = select(self.model)
+            
+            # Применяем фильтры
+            for field, value in filters.items():
+                if hasattr(self.model, field) and value is not None:
+                    stmt = stmt.where(getattr(self.model, field) == value)
+            
+            stmt = stmt.offset(skip).limit(limit)
+            result = await self.session.execute(stmt)
+            return list(result.scalars().all())
+            
+        except Exception as e:
+            logger.error(f"Ошибка при получении списка {self.model.__name__}: {e}")
+            raise
+    
+    async def update(
+        self, 
+        id: Any, 
+        obj_in: UpdateSchemaType
+    ) -> Optional[ModelType]:
+        """Обновляет запись по ID.
+        
+        Args:
+            id: Идентификатор записи
+            obj_in: Данные для обновления
+            
+        Returns:
+            Обновленная запись или None если не найдена
+        """
+        try:
+            # Получаем существующую запись
+            db_obj = await self.get(id)
+            if not db_obj:
+                return None
+            
+            # Подготавливаем данные для обновления
+            if hasattr(obj_in, 'model_dump'):
+                update_data = obj_in.model_dump(exclude_unset=True)
+            elif hasattr(obj_in, 'dict'):
+                update_data = obj_in.dict(exclude_unset=True)
+            else:
+                update_data = obj_in
+            
+            # Обновляем поля
+            for field, value in update_data.items():
+                if hasattr(db_obj, field):
+                    setattr(db_obj, field, value)
+            
+            await self.session.commit()
+            await self.session.refresh(db_obj)
+            
+            logger.debug(f"Обновлена запись {self.model.__name__} с ID: {id}")
+            return db_obj
+            
+        except Exception as e:
+            await self.session.rollback()
+            logger.error(f"Ошибка при обновлении {self.model.__name__} с ID {id}: {e}")
+            raise
+    
+    async def delete(self, id: Any) -> bool:
+        """Удаляет запись по ID.
+        
+        Args:
+            id: Идентификатор записи
+            
+        Returns:
+            True если запись была удалена, False если не найдена
+        """
+        try:
+            # Проверяем существование записи
+            db_obj = await self.get(id)
+            if not db_obj:
+                return False
+            
+            stmt = delete(self.model).where(self.model.id == id)
+            result = await self.session.execute(stmt)
+            await self.session.commit()
+            
+            deleted_count = result.rowcount
+            if deleted_count > 0:
+                logger.debug(f"Удалена запись {self.model.__name__} с ID: {id}")
+                return True
             return False
-
-        stmt = (
-            update(FilterRule)
-            .where(FilterRule.id == group_id)
-            .values({column_name: value})
-        )
-        result = await self.session.execute(stmt)
-        return result.rowcount > 0
-
-
-class UserRepository(BaseRepository[User]):
-    """Репозиторий пользователей - расширенные CRUD операции"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, User)
-
-    async def get_user_by_filters(self, filters: dict) -> User | None:
-        """Получение пользователя по фильтрам"""
-        stmt = select(User).filter_by(**filters)
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-
-class GroupRepository(BaseRepository[Group]):
-    """Репозиторий для работы с группами"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, Group)
-
-
-class GroupMemberRepository(BaseRepository[GroupMember]):
-    """Репозиторий участников групп"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, GroupMember)
-
-    async def get_by_user_and_group(
-        self, user_id: int, group_id: int
-    ) -> GroupMember | None:
-        """Получение членства по пользователю и группе"""
-        stmt = select(GroupMember).where(
-            and_(GroupMember.user_id == user_id, GroupMember.group_id == group_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_group_members(
-        self, group_id: int, status: MemberStatus | None = None
-    ) -> list[GroupMember]:
-        """Получение участников группы"""
-        stmt = select(GroupMember).options(joinedload(GroupMember.user))
-
-        conditions = [GroupMember.group_id == group_id]
-        if status:
-            conditions.append(GroupMember.status == status)
-
-        stmt = stmt.where(and_(*conditions))
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-class CaptchaSettingRepository(BaseRepository[CaptchaSetting]):
-    """Репозиторий для работы с настройками каптчи"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, CaptchaSetting)
-
-    async def get_by_group_id(self, group_id: int) -> CaptchaSetting | None:
-        """Получение настроек каптчи по ID группы"""
-        stmt = select(CaptchaSetting).where(CaptchaSetting.group_id == group_id)
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def update_by_column_name(
-        self, group_id: int, column_name: str, value: Any
-    ) -> bool:
-        """Обновление настройки каптчи по названию колонки в группе"""
-        if not hasattr(CaptchaSetting, column_name):
-            return False
-
-        stmt = (
-            update(CaptchaSetting)
-            .where(CaptchaSetting.group_id == group_id)
-            .values({column_name: value})
-        )
-        result = await self.session.execute(stmt)
-        return result.rowcount > 0
-
-
-class CaptchaSessionRepository(BaseRepository[CaptchaSession]):
-    """Репозиторий для работы с сессиями каптчи"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, CaptchaSession)
-
-    async def get_by_user_and_group(
-        self, user_id: int, group_id: int
-    ) -> CaptchaSession | None:
-        """Получение активной сессии каптчи по пользователю и группе"""
-        stmt = select(CaptchaSession).where(
-            and_(
-                CaptchaSession.user_id == user_id,
-                CaptchaSession.group_id == group_id,
-                CaptchaSession.status == "pending",
-            )
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_active_sessions_by_group(self, group_id: int) -> list[CaptchaSession]:
-        """Получение всех активных сессий каптчи в группе"""
-        stmt = select(CaptchaSession).where(
-            and_(
-                CaptchaSession.group_id == group_id,
-                CaptchaSession.status == "pending",
-            )
-        )
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def cleanup_expired_sessions(self) -> int:
-        """Очистка истекших сессий каптчи"""
-        from datetime import datetime
-
-        stmt = (
-            update(CaptchaSession)
-            .where(
-                and_(
-                    CaptchaSession.status == "pending",
-                    CaptchaSession.expires_at < datetime.now(),
-                )
-            )
-            .values(status="expired")
-        )
-        result = await self.session.execute(stmt)
-        return result.rowcount
-
-
-# Репозитории для рекламной системы
-class AdvertiserRepository(BaseRepository[Advertiser]):
-    """Репозиторий для работы с рекламодателями"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, Advertiser)
-
-    async def get_by_user_id(self, user_id: int) -> Advertiser | None:
-        """Получение рекламодателя по ID пользователя"""
-        stmt = select(Advertiser).where(Advertiser.user_id == user_id)
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_with_campaigns(self, advertiser_id: int) -> Advertiser | None:
-        """Получение рекламодателя с его кампаниями"""
-        stmt = (
-            select(Advertiser)
-            .options(joinedload(Advertiser.ad_campaigns))
-            .where(Advertiser.id == advertiser_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-
-class AdCampaignRepository(BaseRepository[AdCampaign]):
-    """Репозиторий для работы с рекламными кампаниями"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, AdCampaign)
-
-    async def get_by_advertiser(self, advertiser_id: int) -> list[AdCampaign]:
-        """Получение всех кампаний рекламодателя"""
-        stmt = select(AdCampaign).where(AdCampaign.advertiser_id == advertiser_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_active_campaigns(self) -> list[AdCampaign]:
-        """Получение всех активных кампаний"""
-        stmt = select(AdCampaign).where(AdCampaign.status == AdCampaignStatus.ACTIVE)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_with_creatives(self, campaign_id: int) -> AdCampaign | None:
-        """Получение кампании с её креативами"""
-        stmt = (
-            select(AdCampaign)
-            .options(joinedload(AdCampaign.ad_creatives))
-            .where(AdCampaign.id == campaign_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_with_placements(self, campaign_id: int) -> AdCampaign | None:
-        """Получение кампании с местами размещения"""
-        stmt = (
-            select(AdCampaign)
-            .options(joinedload(AdCampaign.ad_placements))
-            .where(AdCampaign.id == campaign_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-
-class AdCreativeRepository(BaseRepository[AdCreative]):
-    """Репозиторий для работы с рекламными креативами"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, AdCreative)
-
-    async def get_by_campaign(self, campaign_id: int) -> list[AdCreative]:
-        """Получение всех креативов кампании"""
-        stmt = select(AdCreative).where(AdCreative.campaign_id == campaign_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_pending_moderation(self) -> list[AdCreative]:
-        """Получение всех креативов, ожидающих модерации"""
-        stmt = select(AdCreative).where(AdCreative.status == AdCreativeStatus.PENDING)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-class AdPlacementRepository(BaseRepository[AdPlacement]):
-    """Репозиторий для работы с местами размещения рекламы"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, AdPlacement)
-
-    async def get_by_campaign(self, campaign_id: int) -> list[AdPlacement]:
-        """Получение всех мест размещения кампании"""
-        stmt = select(AdPlacement).where(AdPlacement.campaign_id == campaign_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_group(self, group_id: int) -> list[AdPlacement]:
-        """Получение всех размещений в группе"""
-        stmt = select(AdPlacement).where(AdPlacement.group_id == group_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_with_campaign_and_group(
-        self, placement_id: int
-    ) -> AdPlacement | None:
-        """Получение размещения с кампанией и группой"""
-        stmt = (
-            select(AdPlacement)
-            .options(
-                joinedload(AdPlacement.ad_campaign),
-                joinedload(AdPlacement.group),
-            )
-            .where(AdPlacement.id == placement_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-
-class AdAnalyticsRepository(BaseRepository[AdAnalytics]):
-    """Репозиторий для работы с аналитикой рекламы"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, AdAnalytics)
-
-    async def get_by_creative(self, creative_id: int) -> list[AdAnalytics]:
-        """Получение всех событий аналитики для креатива"""
-        stmt = select(AdAnalytics).where(AdAnalytics.creative_id == creative_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_group(self, group_id: int) -> list[AdAnalytics]:
-        """Получение всех событий аналитики для группы"""
-        stmt = select(AdAnalytics).where(AdAnalytics.group_id == group_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_user(self, user_id: int) -> list[AdAnalytics]:
-        """Получение всех событий аналитики для пользователя"""
-        stmt = select(AdAnalytics).where(AdAnalytics.user_id == user_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-class TransactionRepository(BaseRepository[Transaction]):
-    """Репозиторий для работы с транзакциями"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, Transaction)
-
-    async def get_by_advertiser(self, advertiser_id: int) -> list[Transaction]:
-        """Получение всех транзакций рекламодателя"""
-        stmt = select(Transaction).where(Transaction.advertiser_id == advertiser_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-# Репозитории для системы постов
-class AdminPostRepository(BaseRepository[AdminPost]):
-    """Репозиторий для работы с административными постами"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, AdminPost)
-
-    async def get_by_user_id(self, user_id: int) -> list[AdminPost]:
-        """Получение всех постов пользователя"""
-        stmt = select(AdminPost).where(AdminPost.user_id == user_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_status(self, status: PostStatus) -> list[AdminPost]:
-        """Получение всех постов по статусу"""
-        stmt = select(AdminPost).where(AdminPost.status == status)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_user_and_status(
-        self, user_id: int, status: PostStatus
-    ) -> list[AdminPost]:
-        """Получение постов пользователя по статусу"""
-        stmt = select(AdminPost).where(
-            and_(AdminPost.user_id == user_id, AdminPost.status == status)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_ready_to_publish(self) -> list[AdminPost]:
-        """Получение постов готовых к публикации"""
-        from datetime import datetime
-
-        stmt = select(AdminPost).where(
-            and_(
-                AdminPost.status == PostStatus.SCHEDULED,
-                AdminPost.scheduled_at <= datetime.now(),
-            )
-        )
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_with_relations(self, post_id: int) -> AdminPost | None:
-        """Получение поста с загрузкой связанных данных"""
-        stmt = (
-            select(AdminPost)
-            .options(
-                joinedload(AdminPost.poll).joinedload(Poll.options),
-                joinedload(AdminPost.published_posts),
-                joinedload(AdminPost.analytics),
-            )
-            .where(AdminPost.id == post_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_with_analytics(self, post_id: int) -> AdminPost | None:
-        """Получение поста с аналитикой"""
-        stmt = (
-            select(AdminPost)
-            .options(joinedload(AdminPost.analytics))
-            .where(AdminPost.id == post_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def search_posts(
-        self, query: str, user_id: int = None, status: PostStatus = None
-    ) -> list[AdminPost]:
-        """Поиск постов по заголовку или содержимому"""
-        conditions = [
-            AdminPost.title.ilike(f"%{query}%") | AdminPost.content.ilike(f"%{query}%")
-        ]
-
-        if user_id:
-            conditions.append(AdminPost.user_id == user_id)
-        if status:
-            conditions.append(AdminPost.status == status)
-
-        stmt = select(AdminPost).where(and_(*conditions))
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-
-class PollRepository(BaseRepository[Poll]):
-    """Репозиторий для работы с опросами"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, Poll)
-
-    async def get_by_post_id(self, post_id: int) -> Poll | None:
-        """Получение опроса по ID поста"""
-        stmt = (
-            select(Poll)
-            .options(joinedload(Poll.options))
-            .where(Poll.post_id == post_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def create_option(self, poll_id: int, text: str, position: int) -> PollOption:
-        """Создание варианта ответа для опроса"""
-        option = PollOption(poll_id=poll_id, text=text, position=position)
-        self.session.add(option)
-        await self.session.flush()
-        return option
-
-    async def delete_options(self, poll_id: int) -> None:
-        """Удаление всех вариантов ответов опроса"""
-        stmt = select(PollOption).where(PollOption.poll_id == poll_id)
-        result = await self.session.execute(stmt)
-        options = result.scalars().all()
-        for option in options:
-            await self.session.delete(option)
-        await self.session.flush()
-
-    async def get_with_votes(self, poll_id: int) -> Poll | None:
-        """Получение опроса с голосами"""
-        stmt = (
-            select(Poll)
-            .options(
-                joinedload(Poll.options),
-                joinedload(Poll.votes),
-            )
-            .where(Poll.id == poll_id)
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-
-class PublishedPostRepository(BaseRepository[PublishedPost]):
-    """Репозиторий для работы с опубликованными постами"""
-
-    def __init__(self, session: AsyncSession):
-        super().__init__(session, PublishedPost)
-
-    async def get_by_post_id(self, post_id: int) -> list[PublishedPost]:
-        """Получение всех публикаций поста"""
-        stmt = select(PublishedPost).where(PublishedPost.post_id == post_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
-
-    async def get_by_post_and_chat(
-        self, post_id: int, chat_id: int
-    ) -> PublishedPost | None:
-        """Получение публикации поста в конкретном чате"""
-        stmt = select(PublishedPost).where(
-            and_(
-                PublishedPost.post_id == post_id,
-                PublishedPost.chat_id == chat_id,
-            )
-        )
-        result = await self.session.execute(stmt)
-        return result.scalar_one_or_none()
-
-    async def get_by_chat_id(self, chat_id: int) -> list[PublishedPost]:
-        """Получение всех публикаций в чате"""
-        stmt = select(PublishedPost).where(PublishedPost.chat_id == chat_id)
-        result = await self.session.execute(stmt)
-        return result.scalars().all()
+            
+        except Exception as e:
+            await self.session.rollback()
+            logger.error(f"Ошибка при удалении {self.model.__name__} с ID {id}: {e}")
+            raise
+    
+    async def count(self, **filters) -> int:
+        """Подсчитывает количество записей с фильтрацией.
+        
+        Args:
+            **filters: Фильтры для подсчета
+            
+        Returns:
+            Количество записей
+        """
+        try:
+            from sqlalchemy import func
+            
+            stmt = select(func.count(self.model.id))
+            
+            # Применяем фильтры
+            for field, value in filters.items():
+                if hasattr(self.model, field) and value is not None:
+                    stmt = stmt.where(getattr(self.model, field) == value)
+            
+            result = await self.session.execute(stmt)
+            return result.scalar() or 0
+            
+        except Exception as e:
+            logger.error(f"Ошибка при подсчете {self.model.__name__}: {e}")
+            raise
+    
+    async def exists(self, id: Any) -> bool:
+        """Проверяет существование записи по ID.
+        
+        Args:
+            id: Идентификатор записи
+            
+        Returns:
+            True если запись существует
+        """
+        try:
+            from sqlalchemy import exists as sql_exists
+            
+            stmt = select(sql_exists().where(self.model.id == id))
+            result = await self.session.execute(stmt)
+            return result.scalar() or False
+            
+        except Exception as e:
+            logger.error(f"Ошибка при проверке существования {self.model.__name__} с ID {id}: {e}")
+            raise
+    
+    async def bulk_create(self, objects: List[CreateSchemaType]) -> List[ModelType]:
+        """Создает несколько записей за один раз.
+        
+        Args:
+            objects: Список данных для создания записей
+            
+        Returns:
+            Список созданных записей
+        """
+        try:
+            db_objects = []
+            for obj_in in objects:
+                if hasattr(obj_in, 'model_dump'):
+                    obj_data = obj_in.model_dump()
+                elif hasattr(obj_in, 'dict'):
+                    obj_data = obj_in.dict()
+                else:
+                    obj_data = obj_in
+                
+                db_obj = self.model(**obj_data)
+                db_objects.append(db_obj)
+            
+            self.session.add_all(db_objects)
+            await self.session.commit()
+            
+            # Обновляем объекты
+            for db_obj in db_objects:
+                await self.session.refresh(db_obj)
+            
+            logger.debug(f"Создано {len(db_objects)} записей {self.model.__name__}")
+            return db_objects
+            
+        except Exception as e:
+            await self.session.rollback()
+            logger.error(f"Ошибка при массовом создании {self.model.__name__}: {e}")
+            raise

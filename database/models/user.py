@@ -202,15 +202,9 @@ class UserActivity(Base):
 
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.id"), nullable=False)
-    activity_date = Column(DateTime(timezone=True), nullable=False, index=True)
-    action_type = Column(String(50), nullable=False)  # message, join, leave, etc.
-    group_id = Column(BigInteger, ForeignKey("groups.id"), nullable=True)
-
-    # Metadata для действия
-    action_metadata = Column(String(1000), nullable=True)  # JSON string
-
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-
-    # Relationships
+    activity_date = Column(DateTime(timezone=True), nullable=False)
+    messages_sent = Column(Integer, default=0)
+    commands_used = Column(Integer, default=0)
+    
+    # Relationship
     user = relationship("User")
-    group = relationship("Group")
