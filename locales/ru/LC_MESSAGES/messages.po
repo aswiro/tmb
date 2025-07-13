@@ -1,0 +1,895 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-07-11 21:09+0500\n"
+"PO-Revision-Date: 2025-07-07 17:12+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: handlers/admins.py:24 handlers/admins.py:30
+msgid "admin-welcome-message"
+msgstr ""
+"👋 Добро пожаловать в панель администратора, {user_name}!\n"
+"\n"
+"Вы имеете расширенные права для управления ботом и группами."
+
+# Captcha settings
+#: handlers/captcha.py:53 handlers/captcha.py:180 handlers/captcha.py:220
+#: handlers/captcha.py:270
+msgid "captcha-settings-menu"
+msgstr "Настройки каптчи"
+
+#: handlers/captcha.py:92 handlers/captcha.py:224
+#, fuzzy
+msgid "setting-updated"
+msgstr "✅ Настройка каптчи обновлены!"
+
+#: handlers/captcha.py:99
+#, fuzzy
+msgid "select-captcha-type"
+msgstr "Тип каптчи: {type}"
+
+#: handlers/captcha.py:109
+#, fuzzy
+msgid "select-captcha-size"
+msgstr "Размер каптчи: {size}"
+
+#: handlers/captcha.py:119
+#, fuzzy
+msgid "select-captcha-difficulty"
+msgstr "Сложность: {difficulty}"
+
+#: handlers/captcha.py:128 handlers/captcha.py:137
+msgid "enter-new-value"
+msgstr "Введите новое значение"
+
+#: handlers/captcha.py:155 handlers/captcha.py:203
+msgid "invalid-numeric-value"
+msgstr "❌ Неверное значение. Пожалуйста, введите корректное число."
+
+#: handlers/captcha.py:242
+#, fuzzy
+msgid "error-generating-captcha"
+msgstr "❌ Ошибка получения списка групп."
+
+# Captcha settings
+#: handlers/captcha.py:250
+#, fuzzy
+msgid "captcha-preview-caption"
+msgstr "Настройки каптчи"
+
+#: handlers/filters.py:30
+msgid "select_group"
+msgstr "📋 Выберите группу для настройки фильтров:"
+
+#: handlers/filters.py:45
+msgid "no-filters-found"
+msgstr "❌ Фильтры для этой группы не найдены."
+
+#: handlers/filters.py:54 handlers/filters.py:81 handlers/filters.py:156
+msgid "unknown-group"
+msgstr "Неизвестная группа"
+
+#: handlers/filters.py:57
+msgid "filters-for-group"
+msgstr "🔧 Фильтры для группы: {group_name}"
+
+#: handlers/filters.py:84 handlers/filters.py:160
+msgid "filter-updated-success"
+msgstr "✅ Фильтр успешно обновлен для группы: {group_name}"
+
+#: handlers/filters.py:90 keyboards/filters.py:58
+msgid "filter-max-message-length"
+msgstr "Макс. длина сообщения"
+
+#: handlers/filters.py:91
+msgid "filter-bonus-per-user"
+msgstr "Бонус за пользователя"
+
+#: handlers/filters.py:92
+msgid "filter-bonus-checkpoint"
+msgstr "Контрольная точка бонуса"
+
+#: handlers/filters.py:104
+msgid "enter-value"
+msgstr ""
+"Введите новое значение для фильтра {filter_name}. Текущее значение: "
+"{current_value}"
+
+#: handlers/filters.py:130
+msgid "invalid-message-length-range"
+msgstr ""
+"❌ Недопустимое значение! Длина сообщения должна быть от 10 до 4000 "
+"символов."
+
+#: handlers/filters.py:134
+msgid "invalid-bonus-per-user-range"
+msgstr ""
+"❌ Недопустимое значение! Бонус за пользователя должен быть от 1 до 100 "
+"единиц."
+
+#: handlers/filters.py:138
+msgid "invalid-bonus-checkpoint-range"
+msgstr ""
+"❌ Недопустимое значение! Контрольная точка бонуса должна быть от 100 до "
+"10000 единиц."
+
+#: handlers/filters.py:167
+#, fuzzy
+msgid "invalid-number-format"
+msgstr ""
+"❌ Неверный формат группы. Пожалуйста, отправьте действительную ссылку на "
+"группу или имя пользователя."
+
+#: handlers/filters.py:174
+msgid "filter-update-error"
+msgstr "❌ Ошибка при обновлении фильтра. Попробуйте еще раз."
+
+#: handlers/groups.py:39
+msgid "error-getting-groups"
+msgstr "❌ Ошибка получения списка групп."
+
+#: handlers/groups.py:49
+msgid "groups-list-empty"
+msgstr "📭 Список групп пуст."
+
+#: handlers/groups.py:53
+msgid "all-groups-header"
+msgstr "📋 Все группы:"
+
+#: handlers/groups.py:71
+msgid "add-group-instructions"
+msgstr ""
+"Пожалуйста, отправьте мне ссылку на группу или имя пользователя "
+"(например, @groupname или https://t.me/groupname)"
+
+#: handlers/groups.py:86
+msgid "invalid-group-format"
+msgstr ""
+"❌ Неверный формат группы. Пожалуйста, отправьте действительную ссылку на "
+"группу или имя пользователя."
+
+#: handlers/groups.py:94
+msgid "getting-group-info"
+msgstr "🔍 Получение информации о группе..."
+
+#: handlers/groups.py:103
+msgid "getting-admins-list"
+msgstr "👥 Получение списка администраторов..."
+
+#: handlers/groups.py:115
+msgid "saving-to-database"
+msgstr "💾 Сохранение в базу данных..."
+
+#: handlers/groups.py:151 handlers/groups.py:240
+msgid "no-username"
+msgstr "Нет имени пользователя"
+
+#: handlers/groups.py:152
+msgid "group-added-success"
+msgstr "✅ Группа успешно добавлена в мониторинг!"
+
+#: handlers/groups.py:175
+msgid "error-chat-not-found"
+msgstr "❌ Чат не найден. Пожалуйста, проверьте ссылку или имя пользователя."
+
+#: handlers/groups.py:177
+msgid "error-bot-not-member"
+msgstr ""
+"❌ Бот не является участником этой группы. Пожалуйста, сначала добавьте "
+"бота в группу."
+
+#: handlers/groups.py:179
+msgid "error-insufficient-rights"
+msgstr "❌ У бота недостаточно прав в этой группе."
+
+#: handlers/groups.py:181
+msgid "error-adding-group"
+msgstr "❌ Ошибка добавления группы. Пожалуйста, попробуйте позже."
+
+#: handlers/groups.py:209
+msgid "error-group-not-found"
+msgstr "❌ Группа не найдена."
+
+#: handlers/groups.py:211
+msgid "error-insufficient-permissions"
+msgstr "❌ Недостаточно прав."
+
+#: handlers/groups.py:213
+msgid "error-cannot-remove-related-data"
+msgstr "❌ Невозможно удалить связанные данные."
+
+#: handlers/groups.py:215
+msgid "error-removing-group"
+msgstr "❌ Ошибка удаления группы."
+
+#: handlers/groups.py:235
+msgid "group-not-found"
+msgstr "❌ Группа не найдена."
+
+#: handlers/groups.py:245
+msgid "failed-to-remove-group"
+msgstr "❌ Не удалось удалить группу."
+
+#: handlers/groups.py:252
+msgid "group-removed-success"
+msgstr "✅ Группа успешно удалена!"
+
+#: handlers/language.py:24 handlers/language.py:36
+msgid "choose-language"
+msgstr "🌐 Выберите ваш язык:"
+
+#: handlers/language.py:64
+msgid "language-changed"
+msgstr "✅ Язык успешно изменен!"
+
+#: handlers/users.py:15
+msgid "welcome-message"
+msgstr ""
+"👋 Добро пожаловать, {user_name}!\n"
+"\n"
+"Я бот для мониторинга Telegram-групп. Выберите действие из меню ниже:"
+
+#: keyboards/buttons.py:28 keyboards/buttons.py:49 keyboards/buttons.py:63
+msgid "back-to-menu"
+msgstr "🔙 Назад в меню"
+
+#: keyboards/buttons.py:35
+msgid "change-language"
+msgstr "🌐 Изменить язык"
+
+#: keyboards/buttons.py:42
+msgid "add-group"
+msgstr "➕ Добавить группу"
+
+#: keyboards/buttons.py:56
+msgid "my-groups"
+msgstr "👥 Мои группы"
+
+#: keyboards/buttons.py:70
+msgid "filters-menu"
+msgstr "🔧 Меню фильтров"
+
+#: keyboards/captcha.py:27
+msgid "captcha-type"
+msgstr "Тип капчи"
+
+#: keyboards/captcha.py:33
+msgid "captcha-size"
+msgstr "Размер капчи"
+
+#: keyboards/captcha.py:54
+msgid "captcha-difficulty"
+msgstr "Сложность"
+
+#: keyboards/captcha.py:58 keyboards/captcha.py:253
+msgid "easy"
+msgstr "Легкий"
+
+#: keyboards/captcha.py:59
+msgid "light"
+msgstr "Простой"
+
+#: keyboards/captcha.py:60 keyboards/captcha.py:254
+msgid "medium"
+msgstr "Средний"
+
+#: keyboards/captcha.py:61 keyboards/captcha.py:255
+msgid "hard"
+msgstr "Сложный"
+
+#: keyboards/captcha.py:62 keyboards/captcha.py:256
+msgid "expert"
+msgstr "Эксперт"
+
+#: keyboards/captcha.py:63
+msgid "nightmare"
+msgstr "Кошмар"
+
+#: keyboards/captcha.py:68
+msgid "captcha-chars-mode"
+msgstr "Набор символов"
+
+#: keyboards/captcha.py:70
+msgid "nums"
+msgstr "Цифры"
+
+#: keyboards/captcha.py:70
+msgid "hex"
+msgstr "Шестнадцатеричные"
+
+#: keyboards/captcha.py:70
+msgid "ascii"
+msgstr "ASCII"
+
+#: keyboards/captcha.py:74
+msgid "captcha-multicolor"
+msgstr "Разноцветная"
+
+#: keyboards/captcha.py:79
+msgid "captcha-margin"
+msgstr "Отступы"
+
+#: keyboards/captcha.py:84
+msgid "captcha-multiplication"
+msgstr "Умножение"
+
+#: keyboards/captcha.py:89
+msgid "captcha-timeout"
+msgstr "Время на решение"
+
+#: keyboards/captcha.py:94
+msgid "captcha-max-attempts"
+msgstr "Макс. попыток"
+
+#: keyboards/captcha.py:99
+msgid "captcha-auto-kick"
+msgstr "Автокик при неудаче"
+
+#: keyboards/captcha.py:147
+msgid "preview-captcha"
+msgstr "Предпросмотр"
+
+#: keyboards/captcha.py:156
+msgid "back-to-filters"
+msgstr "🔙 Назад к фильтрам"
+
+#: keyboards/captcha.py:170
+msgid "captcha-type-standard"
+msgstr "Стандарт"
+
+#: keyboards/captcha.py:171
+msgid "captcha-type-math"
+msgstr "Математическая"
+
+#: keyboards/captcha.py:190 keyboards/captcha.py:227 keyboards/captcha.py:240
+#: keyboards/captcha.py:275 keyboards/filters.py:138
+msgid "back"
+msgstr "Назад"
+
+#: keyboards/filters.py:50
+msgid "filter-hashtag"
+msgstr "Хештеги"
+
+#: keyboards/filters.py:51
+msgid "filter-url"
+msgstr "URL-ссылки"
+
+#: keyboards/filters.py:52
+msgid "filter-email"
+msgstr "Email-адреса"
+
+#: keyboards/filters.py:53
+msgid "filter-ads"
+msgstr "Реклама"
+
+#: keyboards/filters.py:54
+msgid "filter-phone-number"
+msgstr "Номера телефонов"
+
+#: keyboards/filters.py:55
+msgid "filter-forbidden-words"
+msgstr "Запрещенные слова"
+
+#: keyboards/filters.py:56
+msgid "filter-track-members"
+msgstr "Отслеживание участников"
+
+#: keyboards/filters.py:57
+msgid "filter-captcha"
+msgstr "Капча"
+
+# Captcha settings
+#: keyboards/filters.py:82
+msgid "captcha-settings"
+msgstr "Настройки каптчи"
+
+#: keyboards/filters.py:91
+msgid "filter-bonuses-enabled"
+msgstr "Система бонусов"
+
+#: keyboards/filters.py:125
+msgid "back-to-groups"
+msgstr "🔙 Назад к группам"
+
+#~ msgid "not-member-any-group"
+#~ msgstr "Вы не являетесь участником ни одной отслеживаемой группы."
+
+#~ msgid "your-groups-header"
+#~ msgstr "👥 Ваши группы:"
+
+#~ msgid "active"
+#~ msgstr "Активна"
+
+#~ msgid "inactive"
+#~ msgstr "Неактивна"
+
+#~ msgid "administrator"
+#~ msgstr "Администратор"
+
+#~ msgid "member"
+#~ msgstr "Участник"
+
+#~ msgid "groups-list-empty-nothing-to-remove"
+#~ msgstr "📭 Список групп пуст. Нечего удалять."
+
+#~ msgid "no-rights-to-remove-groups"
+#~ msgstr "❌ У вас нет прав для удаления групп."
+
+#~ msgid "select-group-to-remove"
+#~ msgstr "🗑️ Выберите группу для удаления:"
+
+#~ msgid "invalid-group-id"
+#~ msgstr "❌ Неверный ID группы."
+
+#~ msgid "choose-action"
+#~ msgstr "🎯 Выберите действие:"
+
+#~ msgid "no-rights-to-remove-this-group"
+#~ msgstr "❌ У вас нет прав для удаления этой группы."
+
+#~ msgid "hello"
+#~ msgstr "👋 Привет! Я Telegram-бот для мониторинга групп."
+
+#~ msgid "group-management"
+#~ msgstr "👥 Управление группами"
+
+#~ msgid "delete-group"
+#~ msgstr "🗑️ Удалить группу"
+
+#~ msgid "language-changed-notification"
+#~ msgstr "Язык успешно изменен!"
+
+#~ msgid "my-groups-info"
+#~ msgstr ""
+#~ "👥 Ваши группы:\n"
+#~ "\n"
+#~ "Здесь будет отображаться список групп, в"
+#~ " которых вы состоите и которые "
+#~ "отслеживаются ботом."
+
+#~ msgid "select_filter"
+#~ msgstr "🔧 Выберите фильтр для настройки:"
+
+#~ msgid "update-filter-value"
+#~ msgstr ""
+#~ "⚙️ Изменить значение фильтра: {filter_name}\n"
+#~ "\n"
+#~ "📊 Текущее значение: {current_value}"
+
+#~ msgid "main-menu"
+#~ msgstr "🏠 Главное меню"
+
+#~ msgid "enable"
+#~ msgstr "✅ Включить"
+
+#~ msgid "disable"
+#~ msgstr "❌ Выключить"
+
+#~ msgid "operation-cancelled"
+#~ msgstr "Операция отменена"
+
+#~ msgid "captcha-settings-title"
+#~ msgstr "🔐 Настройки каптчи для группы: {group_name}"
+
+#~ msgid "captcha-enabled"
+#~ msgstr "Каптча включена"
+
+#~ msgid "captcha-disabled"
+#~ msgstr "Каптча выключена"
+
+#~ msgid "captcha-welcome-message"
+#~ msgstr "Приветственное сообщение"
+
+#~ msgid "captcha-success-message"
+#~ msgstr "Сообщение об успехе"
+
+#~ msgid "captcha-fail-message"
+#~ msgstr "Сообщение о неудаче"
+
+#~ msgid "captcha-timeout-message"
+#~ msgstr "Сообщение о таймауте"
+
+#~ msgid "captcha-trusted-users"
+#~ msgstr "Доверенные пользователи"
+
+#~ msgid "captcha-verification-channel"
+#~ msgstr "Канал верификации"
+
+#~ msgid "captcha-type-text"
+#~ msgstr "Текстовая"
+
+#~ msgid "captcha-type-image"
+#~ msgstr "Изображение"
+
+#~ msgid "captcha-type-button"
+#~ msgstr "Кнопка"
+
+#~ msgid "captcha-size-small"
+#~ msgstr "Маленький"
+
+#~ msgid "captcha-size-medium"
+#~ msgstr "Средний"
+
+#~ msgid "captcha-size-large"
+#~ msgstr "Большой"
+
+#~ msgid "captcha-difficulty-easy"
+#~ msgstr "Легкая"
+
+#~ msgid "captcha-difficulty-medium"
+#~ msgstr "Средняя"
+
+#~ msgid "captcha-difficulty-hard"
+#~ msgstr "Сложная"
+
+#~ msgid "captcha-enter-new-value"
+#~ msgstr "Введите новое значение для {setting}:"
+
+#~ msgid "captcha-invalid-value"
+#~ msgstr "❌ Неверное значение. Попробуйте еще раз."
+
+#~ msgid "captcha-back-to-settings"
+#~ msgstr "🔙 Назад к настройкам каптчи"
+
+#~ msgid "numeric-setting-instruction"
+#~ msgstr "Пожалуйста, введите новое значение. Оно должно быть числом."
+
+#: keyboards/buttons.py:42
+msgid "ad-menu"
+msgstr "Настройка рекламы"
+
+# Advertiser messages
+msgid "advertiser-not-found"
+msgstr "❌ Рекламодатель не найден. Пожалуйста, зарегистрируйтесь как рекламодатель."
+
+msgid "advertiser-menu"
+msgstr "👋 Добро пожаловать, {company_name}!\n\n💰 Баланс: {balance} руб.\n\nВыберите действие:"
+
+msgid "no-campaigns"
+msgstr "📭 У вас пока нет рекламных кампаний, {company_name}.\n\nСоздайте свою первую кампанию!"
+
+msgid "my-campaigns-header"
+msgstr "📊 Мои кампании ({company_name}):"
+
+msgid "campaign-info"
+msgstr "{number}. {name}\n   📊 {status} | 💰 {spent}/{budget} руб. ({progress}%)"
+
+msgid "campaign-not-found"
+msgstr "❌ Кампания не найдена или у вас нет доступа к ней."
+
+msgid "campaign-details"
+msgstr "📊 Детали кампании\n\n📝 Название: {name}\n{status_emoji} Статус: {status}\n💰 Бюджет: {budget} руб.\n💸 Потрачено: {spent} руб.\n💵 Остаток: {remaining} руб.\n📅 Начало: {start_date}\n📅 Окончание: {end_date}\n\n📈 Статистика:\n👁 Показы: {impressions}\n👆 Клики: {clicks}\n💰 CTR: {ctr}%"
+
+# Campaign creation messages
+msgid "create-campaign-enter-name"
+msgstr "📝 Создание новой кампании для {company_name}\n\nВведите название кампании (от 3 до 100 символов):"
+
+msgid "campaign-name-too-short"
+msgstr "❌ Название кампании слишком короткое. Минимум 3 символа."
+
+msgid "campaign-name-too-long"
+msgstr "❌ Название кампании слишком длинное. Максимум 100 символов."
+
+msgid "create-campaign-enter-budget"
+msgstr "💰 Кампания: {name}\n\nВведите дневной бюджет кампании (в рублях):\nПример: 1000 или 1500.50"
+
+msgid "budget-must-be-positive"
+msgstr "❌ Бюджет должен быть больше нуля."
+
+msgid "budget-too-large"
+msgstr "❌ Бюджет слишком большой. Максимум 1,000,000 рублей."
+
+msgid "invalid-budget-format"
+msgstr "❌ Неверный формат бюджета. Введите число (например: 1000 или 1500.50)."
+
+msgid "create-campaign-enter-start-date"
+msgstr "📅 Бюджет: {budget} руб.\n\nВыберите дату начала кампании или введите в формате ДД.ММ.ГГГГ ЧЧ:ММ\nПример: 25.12.2024 10:00"
+
+msgid "start-date-in-past"
+msgstr "❌ Дата начала не может быть в прошлом."
+
+msgid "invalid-date-format"
+msgstr "❌ Неверный формат даты. Используйте формат ДД.ММ.ГГГГ ЧЧ:ММ\nПример: 25.12.2024 10:00"
+
+msgid "create-campaign-enter-end-date"
+msgstr "📅 Начало: {start_date}\n\nВыберите дату окончания кампании или введите в формате ДД.ММ.ГГГГ ЧЧ:ММ\nПример: 31.12.2024 23:59"
+
+msgid "end-date-before-start"
+msgstr "❌ Дата окончания должна быть позже даты начала."
+
+msgid "create-campaign-confirmation"
+msgstr "✅ Подтверждение создания кампании\n\n📝 Название: {name}\n💰 Дневной бюджет: {budget} руб.\n📅 Начало: {start_date}\n📅 Окончание: {end_date}\n\nВсе данные верны?"
+
+msgid "campaign-created-success"
+msgstr "🎉 Кампания '{name}' успешно создана!\n\n🆔 ID кампании: {campaign_id}\n📊 Статус: Черновик\n\nТеперь вы можете настроить креативы и запустить кампанию."
+
+msgid "campaign-creation-error"
+msgstr "❌ Ошибка при создании кампании. Попробуйте еще раз."
+
+msgid "campaign-creation-cancelled"
+msgstr "❌ Создание кампании отменено."
+
+# Campaign statuses
+msgid "status-draft"
+msgstr "Черновик"
+
+msgid "status-active"
+msgstr "Активна"
+
+msgid "status-paused"
+msgstr "Приостановлена"
+
+msgid "status-completed"
+msgstr "Завершена"
+
+msgid "status-cancelled"
+msgstr "Отменена"
+
+# Keyboard buttons
+msgid "my-campaigns"
+msgstr "📊 Мои кампании"
+
+msgid "create-campaign"
+msgstr "➕ Создать кампанию"
+
+msgid "ad-analytics"
+msgstr "📈 Аналитика"
+
+msgid "back-to-ad-menu"
+msgstr "🔙 Назад в меню рекламы"
+
+msgid "campaign-analytics"
+msgstr "📈 Аналитика кампаний"
+
+msgid "show-more-campaigns"
+msgstr "📋 Показать больше"
+
+msgid "activate-campaign"
+msgstr "▶️ Активировать"
+
+msgid "pause-campaign"
+msgstr "⏸️ Приостановить"
+
+msgid "resume-campaign"
+msgstr "▶️ Возобновить"
+
+msgid "edit-campaign"
+msgstr "✏️ Редактировать"
+
+msgid "campaign-creatives"
+msgstr "🎨 Креативы"
+
+msgid "back-to-campaigns"
+msgstr "🔙 К кампаниям"
+
+msgid "cancel"
+msgstr "❌ Отменить"
+
+msgid "start-now"
+msgstr "🚀 Начать сейчас"
+
+msgid "start-later"
+msgstr "📅 Выбрать дату"
+
+msgid "end-one-week"
+msgstr "📅 Через неделю"
+
+msgid "end-one-month"
+msgstr "📅 Через месяц"
+
+msgid "end-custom"
+msgstr "📅 Выбрать дату"
+
+msgid "confirm-create"
+msgstr "✅ Создать кампанию"
+
+msgid "view-campaign"
+msgstr "👁 Посмотреть кампанию"
+
+# Admin messages
+msgid "admin-ad-menu"
+msgstr "👨‍💼 Панель администратора рекламы\n\nВыберите действие:"
+
+msgid "all-campaigns"
+msgstr "📊 Все кампании"
+
+msgid "advertiser-management"
+msgstr "👥 Управление рекламодателями"
+
+msgid "ad-analytics-admin"
+msgstr "📈 Аналитика рекламы"
+
+#: keyboards/ads.py:xxx
+msgid "no-pending-creatives"
+msgstr "Нет креативов на модерации"
+
+#: keyboards/ads.py:xxx
+msgid "show-more-creatives"
+msgstr "Показать ещё креативы"
+
+#: keyboards/ads.py:xxx
+msgid "refresh-queue"
+msgstr "Обновить очередь"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-admin-menu"
+msgstr "Назад в админ меню"
+
+msgid "all-campaigns-title"
+msgstr "📊 Все рекламные кампании"
+
+msgid "total-campaigns"
+msgstr "Всего кампаний: {count}"
+
+msgid "page-info"
+msgstr "Страница {current} из {total}"
+
+msgid "no-campaigns-found"
+msgstr "❌ Кампании не найдены"
+
+msgid "advertisers-management-title"
+msgstr "🏢 Управление рекламодателями"
+
+msgid "total-advertisers"
+msgstr "Всего рекламодателей: {count}"
+
+msgid "advertisers-page-info"
+msgstr "Страница {current} из {total}"
+
+msgid "no-advertisers-found"
+msgstr "Рекламодатели не найдены"
+
+msgid "advertiser_details"
+msgstr "📊 Рекламодатель: {name}\n\n💰 Баланс: {balance}₽\n📈 Всего кампаний: {total_campaigns}\n🟢 Активных кампаний: {active_campaigns}\n💸 Потрачено всего: {total_spent}₽\n📅 Дата регистрации: {created_at}"
+
+msgid "edit_advertiser_balance"
+msgstr "💰 Изменить баланс"
+
+msgid "view_advertiser_campaigns"
+msgstr "📈 Кампании рекламодателя"
+
+msgid "block_advertiser"
+msgstr "🚫 Заблокировать"
+
+msgid "back_to_advertisers"
+msgstr "⬅️ К списку рекламодателей"
+
+msgid "advertiser_not_found"
+msgstr "❌ Рекламодатель не найден"
+
+#: keyboards/ads.py:xxx
+msgid "approve-creative"
+msgstr "Одобрить"
+
+#: keyboards/ads.py:xxx
+msgid "reject-creative"
+msgstr "Отклонить"
+
+#: keyboards/ads.py:xxx
+msgid "view-campaign"
+msgstr "Посмотреть кампанию"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-moderation"
+msgstr "Назад к модерации"
+
+#: keyboards/ads.py:xxx
+msgid "inappropriate-content"
+msgstr "Неподходящий контент"
+
+#: keyboards/ads.py:xxx
+msgid "misleading-info"
+msgstr "Вводящая в заблуждение информация"
+
+#: keyboards/ads.py:xxx
+msgid "poor-quality"
+msgstr "Низкое качество"
+
+#: keyboards/ads.py:xxx
+msgid "policy-violation"
+msgstr "Нарушение политики"
+
+#: keyboards/ads.py:xxx
+msgid "custom-reason"
+msgstr "Другая причина"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-creative"
+msgstr "Назад к креативу"
+
+#: handlers/ads.py:xxx
+msgid "moderation-queue-header"
+msgstr "📋 Очередь модерации креативов"
+
+#: handlers/ads.py:xxx
+msgid "no-creatives-pending"
+msgstr "В очереди модерации нет креативов."
+
+#: handlers/ads.py:xxx
+msgid "creative-details-header"
+msgstr "📝 Детали креатива"
+
+#: handlers/ads.py:xxx
+msgid "creative-type"
+msgstr "Тип: {type}"
+
+#: handlers/ads.py:xxx
+msgid "creative-campaign"
+msgstr "Кампания: {campaign}"
+
+#: handlers/ads.py:xxx
+msgid "creative-advertiser"
+msgstr "Рекламодатель: {advertiser}"
+
+#: handlers/ads.py:xxx
+msgid "creative-created"
+msgstr "Создан: {date}"
+
+#: handlers/ads.py:xxx
+msgid "creative-approved-success"
+msgstr "✅ Креатив успешно одобрен!"
+
+#: handlers/ads.py:xxx
+msgid "creative-rejected-success"
+msgstr "❌ Креатив отклонён. Причина: {reason}"
+
+#: handlers/ads.py:xxx
+msgid "creative-not-found"
+msgstr "Креатив не найден."
+
+#: handlers/ads.py:xxx
+msgid "moderation-error"
+msgstr "Ошибка при модерации креатива."
+
+#: handlers/ads.py:xxx
+msgid "select-rejection-reason"
+msgstr "Выберите причину отклонения:"
+
+#: handlers/ads.py:xxx
+msgid "enter-custom-reason"
+msgstr "Введите причину отклонения:"
+
+#: handlers/ads.py:xxx
+msgid "reason-inappropriate"
+msgstr "Неподходящий контент"
+
+#: handlers/ads.py:xxx
+msgid "reason-misleading"
+msgstr "Вводящая в заблуждение информация"
+
+#: handlers/ads.py:xxx
+msgid "reason-quality"
+msgstr "Низкое качество"
+
+#: handlers/ads.py:xxx
+msgid "reason-policy"
+msgstr "Нарушение политики"
+
+msgid "my-balance"
+msgstr "💰 Мой баланс"
+
+msgid "moderate-ads"
+msgstr "🔍 Модерация рекламы"
+
+msgid "one-week"
+msgstr "📅 Одна неделя"
+
+msgid "one-month"
+msgstr "📅 Один месяц"
+
+msgid "error-occurred"
+msgstr "❌ Произошла ошибка"

@@ -1,0 +1,826 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-07-11 21:09+0500\n"
+"PO-Revision-Date: 2025-07-07 17:11+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: handlers/admins.py:24 handlers/admins.py:30
+msgid "admin-welcome-message"
+msgstr ""
+"👋 Welcome to the admin panel, {user_name}!\n"
+"\n"
+"You have extended rights to manage the bot and groups."
+
+#: handlers/captcha.py:53 handlers/captcha.py:180 handlers/captcha.py:220
+#: handlers/captcha.py:270
+msgid "captcha-settings-menu"
+msgstr "Captcha Settings"
+
+#: handlers/captcha.py:92 handlers/captcha.py:224
+msgid "setting-updated"
+msgstr "Settings updated!"
+
+#: handlers/captcha.py:99
+#, fuzzy
+msgid "select-captcha-type"
+msgstr "Select captcha type"
+
+#: handlers/captcha.py:109
+#, fuzzy
+msgid "select-captcha-size"
+msgstr "Select captcha size"
+
+#: handlers/captcha.py:119
+msgid "select-captcha-difficulty"
+msgstr "Select captcha difficulty"
+
+#: handlers/captcha.py:128 handlers/captcha.py:137
+#, fuzzy
+msgid "enter-new-value"
+msgstr "Enter new value"
+
+#: handlers/captcha.py:155 handlers/captcha.py:203
+msgid "invalid-numeric-value"
+msgstr "❌ Invalid value. Please enter a valid number."
+
+#: handlers/captcha.py:242
+#, fuzzy
+msgid "error-generating-captcha"
+msgstr "❌ Error getting groups list."
+
+#: handlers/captcha.py:250
+#, fuzzy
+msgid "captcha-preview-caption"
+msgstr "Captcha preview"
+
+#: handlers/filters.py:30
+msgid "select_group"
+msgstr "📋 Select a group to configure filters:"
+
+#: handlers/filters.py:45
+msgid "no-filters-found"
+msgstr "❌ No filters found for this group."
+
+#: handlers/filters.py:54 handlers/filters.py:81 handlers/filters.py:156
+msgid "unknown-group"
+msgstr "Unknown group"
+
+#: handlers/filters.py:57
+msgid "filters-for-group"
+msgstr "🔧 Filters for group: {group_name}"
+
+#: handlers/filters.py:84 handlers/filters.py:160
+msgid "filter-updated-success"
+msgstr "✅ Filter successfully updated for group: {group_name}"
+
+#: handlers/filters.py:90 keyboards/filters.py:58
+msgid "filter-max-message-length"
+msgstr "Max message length"
+
+#: handlers/filters.py:91
+msgid "filter-bonus-per-user"
+msgstr "Bonus per user"
+
+#: handlers/filters.py:92
+msgid "filter-bonus-checkpoint"
+msgstr "Bonus checkpoint"
+
+#: handlers/filters.py:104
+msgid "enter-value"
+msgstr "Enter new value for filter {filter_name}. Current value: {current_value}"
+
+#: handlers/filters.py:130
+msgid "invalid-message-length-range"
+msgstr "❌ Invalid value! Message length must be between 10 and 4000 characters."
+
+#: handlers/filters.py:134
+msgid "invalid-bonus-per-user-range"
+msgstr "❌ Invalid value! Bonus per user must be between 1 and 100 units."
+
+#: handlers/filters.py:138
+msgid "invalid-bonus-checkpoint-range"
+msgstr "❌ Invalid value! Bonus checkpoint must be between 100 and 10000 units."
+
+#: handlers/filters.py:167
+#, fuzzy
+msgid "invalid-number-format"
+msgstr "❌ Invalid group format. Please send a valid group link or username."
+
+#: handlers/filters.py:174
+msgid "filter-update-error"
+msgstr "❌ Error updating filter. Please try again."
+
+#: handlers/groups.py:39
+msgid "error-getting-groups"
+msgstr "❌ Error getting groups list."
+
+#: handlers/groups.py:49
+msgid "groups-list-empty"
+msgstr "📭 Groups list is empty."
+
+#: handlers/groups.py:53
+msgid "all-groups-header"
+msgstr "📋 All groups:"
+
+#: handlers/groups.py:71
+msgid "add-group-instructions"
+msgstr ""
+"Please send me the group link or username (e.g., @groupname or "
+"https://t.me/groupname)"
+
+#: handlers/groups.py:86
+msgid "invalid-group-format"
+msgstr "❌ Invalid group format. Please send a valid group link or username."
+
+#: handlers/groups.py:94
+msgid "getting-group-info"
+msgstr "🔍 Getting group information..."
+
+#: handlers/groups.py:103
+msgid "getting-admins-list"
+msgstr "👥 Getting administrators list..."
+
+#: handlers/groups.py:115
+msgid "saving-to-database"
+msgstr "💾 Saving to database..."
+
+#: handlers/groups.py:151 handlers/groups.py:240
+msgid "no-username"
+msgstr "No username"
+
+#: handlers/groups.py:152
+msgid "group-added-success"
+msgstr "✅ Group successfully added to monitoring!"
+
+#: handlers/groups.py:175
+msgid "error-chat-not-found"
+msgstr "❌ Chat not found. Please check the link or username."
+
+#: handlers/groups.py:177
+msgid "error-bot-not-member"
+msgstr ""
+"❌ Bot is not a member of this group. Please add the bot to the group "
+"first."
+
+#: handlers/groups.py:179
+msgid "error-insufficient-rights"
+msgstr "❌ Bot has insufficient rights in this group."
+
+#: handlers/groups.py:181
+msgid "error-adding-group"
+msgstr "❌ Error adding group. Please try again later."
+
+#: handlers/groups.py:209
+msgid "error-group-not-found"
+msgstr "❌ Group not found."
+
+#: handlers/groups.py:211
+msgid "error-insufficient-permissions"
+msgstr "❌ Insufficient permissions."
+
+#: handlers/groups.py:213
+msgid "error-cannot-remove-related-data"
+msgstr "❌ Cannot remove related data."
+
+#: handlers/groups.py:215
+msgid "error-removing-group"
+msgstr "❌ Error removing group."
+
+#: handlers/groups.py:235
+msgid "group-not-found"
+msgstr "❌ Group not found."
+
+#: handlers/groups.py:245
+msgid "failed-to-remove-group"
+msgstr "❌ Failed to remove group."
+
+#: handlers/groups.py:252
+msgid "group-removed-success"
+msgstr "✅ Group successfully removed!"
+
+#: handlers/language.py:24 handlers/language.py:36
+msgid "choose-language"
+msgstr "🌐 Choose your language:"
+
+#: handlers/language.py:64
+msgid "language-changed"
+msgstr "✅ Language changed successfully!"
+
+#: handlers/users.py:15
+msgid "welcome-message"
+msgstr ""
+"👋 Welcome, {user_name}!\n"
+"\n"
+"I'm a bot for monitoring Telegram groups. Choose an action from the menu "
+"below:"
+
+#: keyboards/buttons.py:28 keyboards/buttons.py:49 keyboards/buttons.py:63
+msgid "back-to-menu"
+msgstr "🔙 Back to Menu"
+
+#: keyboards/buttons.py:35
+msgid "change-language"
+msgstr "🌐 Change Language"
+
+#: keyboards/buttons.py:42
+msgid "add-group"
+msgstr "➕ Add Group"
+
+#: keyboards/buttons.py:56
+msgid "my-groups"
+msgstr "👥 My Groups"
+
+#: keyboards/buttons.py:70
+msgid "filters-menu"
+msgstr "🔧 Filters Menu"
+
+#: keyboards/captcha.py:27
+#, fuzzy
+msgid "captcha-type"
+msgstr "Captcha type"
+
+#: keyboards/captcha.py:33
+#, fuzzy
+msgid "captcha-size"
+msgstr "Captcha size"
+
+#: keyboards/captcha.py:54
+msgid "captcha-difficulty"
+msgstr "Captcha difficulty"
+
+#: keyboards/captcha.py:58 keyboards/captcha.py:253
+msgid "easy"
+msgstr "Easy"
+
+#: keyboards/captcha.py:59
+msgid "light"
+msgstr "Light"
+
+#: keyboards/captcha.py:60 keyboards/captcha.py:254
+msgid "medium"
+msgstr "Medium"
+
+#: keyboards/captcha.py:61 keyboards/captcha.py:255
+msgid "hard"
+msgstr "Hard"
+
+#: keyboards/captcha.py:62 keyboards/captcha.py:256
+msgid "expert"
+msgstr "Expert"
+
+#: keyboards/captcha.py:63
+msgid "nightmare"
+msgstr "Nightmare"
+
+#: keyboards/captcha.py:68
+#, fuzzy
+msgid "captcha-chars-mode"
+msgstr "Character Mode"
+
+#: keyboards/captcha.py:70
+msgid "nums"
+msgstr "Numbers"
+
+#: keyboards/captcha.py:70
+msgid "hex"
+msgstr "Hex"
+
+#: keyboards/captcha.py:70
+msgid "ascii"
+msgstr "ASCII"
+
+#: keyboards/captcha.py:74
+#, fuzzy
+msgid "captcha-multicolor"
+msgstr "Multicolor"
+
+#: keyboards/captcha.py:79
+#, fuzzy
+msgid "captcha-margin"
+msgstr "Margin"
+
+#: keyboards/captcha.py:84
+#, fuzzy
+msgid "captcha-multiplication"
+msgstr "Multiplication"
+
+#: keyboards/captcha.py:89
+#, fuzzy
+msgid "captcha-timeout"
+msgstr "Timeout"
+
+#: keyboards/captcha.py:94
+msgid "captcha-max-attempts"
+msgstr "Max attempts"
+
+#: keyboards/captcha.py:99
+msgid "captcha-auto-kick"
+msgstr "Auto-kick"
+
+#: keyboards/captcha.py:147
+#, fuzzy
+msgid "preview-captcha"
+msgstr "Preview captcha"
+
+#: keyboards/captcha.py:156
+#, fuzzy
+msgid "back-to-filters"
+msgstr "🔙 Back to groups"
+
+#: keyboards/captcha.py:170
+msgid "captcha-type-standard"
+msgstr "Standard"
+
+#: keyboards/captcha.py:171
+msgid "captcha-type-math"
+msgstr "Math"
+
+#: keyboards/captcha.py:190 keyboards/captcha.py:227 keyboards/captcha.py:240
+#: keyboards/captcha.py:275 keyboards/filters.py:138
+msgid "back"
+msgstr "Back"
+
+#: keyboards/filters.py:50
+msgid "filter-hashtag"
+msgstr "Hashtags"
+
+#: keyboards/filters.py:51
+msgid "filter-url"
+msgstr "URL links"
+
+#: keyboards/filters.py:52
+msgid "filter-email"
+msgstr "Email addresses"
+
+#: keyboards/filters.py:53
+msgid "filter-ads"
+msgstr "Advertisements"
+
+#: keyboards/filters.py:54
+msgid "filter-phone-number"
+msgstr "Phone numbers"
+
+#: keyboards/filters.py:55
+msgid "filter-forbidden-words"
+msgstr "Forbidden words"
+
+#: keyboards/filters.py:56
+msgid "filter-track-members"
+msgstr "Track members"
+
+#: keyboards/filters.py:57
+msgid "filter-captcha"
+msgstr "Captcha"
+
+#: keyboards/filters.py:82
+#, fuzzy
+msgid "captcha-settings"
+msgstr "Captcha settings"
+
+#: keyboards/filters.py:91
+msgid "filter-bonuses-enabled"
+msgstr "Bonus system"
+
+#: keyboards/filters.py:125
+msgid "back-to-groups"
+msgstr "🔙 Back to groups"
+
+#~ msgid "not-member-any-group"
+#~ msgstr "You are not a member of any monitored groups."
+
+#~ msgid "your-groups-header"
+#~ msgstr "👥 Your groups:"
+
+#~ msgid "active"
+#~ msgstr "Active"
+
+#~ msgid "inactive"
+#~ msgstr "Inactive"
+
+#~ msgid "administrator"
+#~ msgstr "Administrator"
+
+#~ msgid "member"
+#~ msgstr "Member"
+
+#~ msgid "groups-list-empty-nothing-to-remove"
+#~ msgstr "📭 Groups list is empty. Nothing to remove."
+
+#~ msgid "no-rights-to-remove-groups"
+#~ msgstr "❌ You don't have rights to remove groups."
+
+#~ msgid "select-group-to-remove"
+#~ msgstr "🗑️ Select a group to remove:"
+
+#~ msgid "invalid-group-id"
+#~ msgstr "❌ Invalid group ID."
+
+#~ msgid "choose-action"
+#~ msgstr "🎯 Choose an action:"
+
+#~ msgid "no-rights-to-remove-this-group"
+#~ msgstr "❌ You don't have rights to remove this group."
+
+#~ msgid "hello"
+#~ msgstr "👋 Hello! I'm a Telegram bot for monitoring groups."
+
+#~ msgid "group-management"
+#~ msgstr "👥 Group Management"
+
+#~ msgid "delete-group"
+#~ msgstr "🗑️ Delete Group"
+
+#~ msgid "select_filter"
+#~ msgstr "🔧 Select a filter to configure:"
+
+#~ msgid "language-changed-notification"
+#~ msgstr "Language changed successfully!"
+
+#~ msgid "my-groups-info"
+#~ msgstr ""
+#~ "👥 Your groups:\n"
+#~ "\n"
+#~ "Here will be displayed the list of"
+#~ " groups you are a member of and"
+#~ " that are monitored by the bot."
+
+#~ msgid "update-filter-value"
+#~ msgstr ""
+#~ "⚙️ Change filter value: {filter_name}\n"
+#~ "\n"
+#~ "📊 Current value: {current_value}"
+
+#~ msgid "main-menu"
+#~ msgstr "🏠 Main Menu"
+
+#~ msgid "enable"
+#~ msgstr "✅ Enable"
+
+#~ msgid "disable"
+#~ msgstr "❌ Disable"
+
+#~ msgid "operation-cancelled"
+#~ msgstr "Operation cancelled"
+
+#~ msgid "numeric-setting-instruction"
+#~ msgstr "Please enter a new value. It must be a number."
+
+#: keyboards/buttons.py:42
+msgid "ad-menu"
+msgstr "Ad Settings"
+
+# Advertiser messages
+msgid "advertiser-not-found"
+msgstr "Advertiser not found"
+
+msgid "advertiser-menu"
+msgstr "📊 Advertiser Menu"
+
+msgid "no-campaigns"
+msgstr "You don't have any campaigns yet."
+
+msgid "my-campaigns-header"
+msgstr "📋 My Campaigns:"
+
+msgid "campaign-info"
+msgstr "📊 Campaign: {name}\n💰 Budget: ${budget}\n📈 Status: {status}\n📅 Created: {created_at}"
+
+msgid "campaign-not-found"
+msgstr "Campaign not found"
+
+msgid "campaign-details"
+msgstr "📊 Campaign Details\n\n📝 Name: {name}\n💰 Daily Budget: ${daily_budget}\n💸 Spent: ${spent_amount}\n📈 Status: {status}\n📅 Start Date: {start_date}\n📅 End Date: {end_date}\n🕒 Created: {created_at}"
+
+# Campaign creation messages
+msgid "create-campaign-enter-name"
+msgstr "📝 Enter campaign name:"
+
+msgid "campaign-name-too-short"
+msgstr "❌ Campaign name is too short. Minimum 3 characters."
+
+msgid "campaign-name-too-long"
+msgstr "❌ Campaign name is too long. Maximum 100 characters."
+
+msgid "create-campaign-enter-budget"
+msgstr "💰 Enter daily budget (in USD):"
+
+msgid "budget-must-be-positive"
+msgstr "❌ Budget must be positive."
+
+msgid "budget-too-large"
+msgstr "❌ Budget is too large. Maximum $10,000 per day."
+
+msgid "invalid-budget-format"
+msgstr "❌ Invalid budget format. Please enter a number."
+
+msgid "create-campaign-enter-start-date"
+msgstr "📅 Choose start date:"
+
+msgid "start-date-in-past"
+msgstr "❌ Start date cannot be in the past."
+
+msgid "invalid-date-format"
+msgstr "❌ Invalid date format. Use DD.MM.YYYY"
+
+msgid "create-campaign-enter-end-date"
+msgstr "📅 Choose end date:"
+
+msgid "end-date-before-start"
+msgstr "❌ End date cannot be before start date."
+
+msgid "create-campaign-confirmation"
+msgstr "✅ Campaign Summary\n\n📝 Name: {name}\n💰 Daily Budget: ${budget}\n📅 Start Date: {start_date}\n📅 End Date: {end_date}\n\nConfirm creation?"
+
+msgid "campaign-created-success"
+msgstr "✅ Campaign '{name}' created successfully!"
+
+msgid "campaign-creation-error"
+msgstr "❌ Error creating campaign. Please try again."
+
+msgid "campaign-creation-cancelled"
+msgstr "❌ Campaign creation cancelled."
+
+# Campaign statuses
+msgid "status-draft"
+msgstr "Draft"
+
+msgid "status-active"
+msgstr "Active"
+
+msgid "status-paused"
+msgstr "Paused"
+
+msgid "status-completed"
+msgstr "Completed"
+
+msgid "status-cancelled"
+msgstr "Cancelled"
+
+# Keyboard buttons
+msgid "my-campaigns"
+msgstr "📋 My Campaigns"
+
+msgid "create-campaign"
+msgstr "➕ Create Campaign"
+
+msgid "ad-analytics"
+msgstr "📊 Analytics"
+
+msgid "back-to-ad-menu"
+msgstr "🔙 Back to Ad Menu"
+
+msgid "campaign-analytics"
+msgstr "📊 Campaign Analytics"
+
+msgid "show-more-campaigns"
+msgstr "📄 Show More"
+
+msgid "activate-campaign"
+msgstr "▶️ Activate"
+
+msgid "pause-campaign"
+msgstr "⏸️ Pause"
+
+msgid "resume-campaign"
+msgstr "▶️ Resume"
+
+msgid "edit-campaign"
+msgstr "✏️ Edit"
+
+msgid "campaign-creatives"
+msgstr "🎨 Creatives"
+
+msgid "back-to-campaigns"
+msgstr "🔙 Back to Campaigns"
+
+msgid "cancel"
+msgstr "❌ Cancel"
+
+msgid "start-now"
+msgstr "🚀 Start Now"
+
+msgid "start-later"
+msgstr "📅 Start Later"
+
+msgid "end-one-week"
+msgstr "📅 +1 Week"
+
+msgid "end-one-month"
+msgstr "📅 +1 Month"
+
+msgid "end-custom"
+msgstr "📅 Custom Date"
+
+msgid "confirm-create"
+msgstr "✅ Confirm"
+
+msgid "view-campaign"
+msgstr "👁️ View Campaign"
+
+# Admin messages
+msgid "admin-ad-menu"
+msgstr "🔧 Admin Ad Menu"
+
+msgid "all-campaigns"
+msgstr "📋 All Campaigns"
+
+msgid "advertiser-management"
+msgstr "👥 Advertiser Management"
+
+msgid "ad-analytics-admin"
+msgstr "📊 Ad Analytics (Admin)"
+
+#: keyboards/ads.py:xxx
+msgid "no-pending-creatives"
+msgstr "No pending creatives"
+
+#: keyboards/ads.py:xxx
+msgid "show-more-creatives"
+msgstr "Show more creatives"
+
+#: keyboards/ads.py:xxx
+msgid "refresh-queue"
+msgstr "Refresh queue"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-admin-menu"
+msgstr "🔙 Back to admin menu"
+
+msgid "all-campaigns-title"
+msgstr "📊 All Ad Campaigns"
+
+msgid "total-campaigns"
+msgstr "Total campaigns: {count}"
+
+msgid "page-info"
+msgstr "Page {current} of {total}"
+
+msgid "no-campaigns-found"
+msgstr "❌ No campaigns found"
+
+msgid "advertisers-management-title"
+msgstr "🏢 Advertiser Management"
+
+msgid "total-advertisers"
+msgstr "Total advertisers: {count}"
+
+msgid "advertisers-page-info"
+msgstr "Page {current} of {total}"
+
+msgid "no-advertisers-found"
+msgstr "No advertisers found"
+
+msgid "advertiser_details"
+msgstr "📊 Advertiser: {name}\n\n💰 Balance: {balance}₽\n📈 Total campaigns: {total_campaigns}\n🟢 Active campaigns: {active_campaigns}\n💸 Total spent: {total_spent}₽\n📅 Registration date: {created_at}"
+
+msgid "edit_advertiser_balance"
+msgstr "💰 Edit Balance"
+
+msgid "view_advertiser_campaigns"
+msgstr "📈 Advertiser Campaigns"
+
+msgid "block_advertiser"
+msgstr "🚫 Block"
+
+msgid "back_to_advertisers"
+msgstr "⬅️ Back to Advertisers"
+
+msgid "advertiser_not_found"
+msgstr "❌ Advertiser not found"
+
+#: keyboards/ads.py:xxx
+msgid "approve-creative"
+msgstr "Approve"
+
+#: keyboards/ads.py:xxx
+msgid "reject-creative"
+msgstr "Reject"
+
+#: keyboards/ads.py:xxx
+msgid "view-campaign"
+msgstr "View campaign"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-moderation"
+msgstr "Back to moderation"
+
+#: keyboards/ads.py:xxx
+msgid "inappropriate-content"
+msgstr "Inappropriate content"
+
+#: keyboards/ads.py:xxx
+msgid "misleading-info"
+msgstr "Misleading information"
+
+#: keyboards/ads.py:xxx
+msgid "poor-quality"
+msgstr "Poor quality"
+
+#: keyboards/ads.py:xxx
+msgid "policy-violation"
+msgstr "Policy violation"
+
+#: keyboards/ads.py:xxx
+msgid "custom-reason"
+msgstr "Custom reason"
+
+#: keyboards/ads.py:xxx
+msgid "back-to-creative"
+msgstr "Back to creative"
+
+#: handlers/ads.py:xxx
+msgid "moderation-queue-header"
+msgstr "📋 Creative Moderation Queue"
+
+#: handlers/ads.py:xxx
+msgid "no-creatives-pending"
+msgstr "No creatives pending moderation."
+
+#: handlers/ads.py:xxx
+msgid "creative-details-header"
+msgstr "📝 Creative Details"
+
+#: handlers/ads.py:xxx
+msgid "creative-type"
+msgstr "Type: {type}"
+
+#: handlers/ads.py:xxx
+msgid "creative-campaign"
+msgstr "Campaign: {campaign}"
+
+#: handlers/ads.py:xxx
+msgid "creative-advertiser"
+msgstr "Advertiser: {advertiser}"
+
+#: handlers/ads.py:xxx
+msgid "creative-created"
+msgstr "Created: {date}"
+
+#: handlers/ads.py:xxx
+msgid "creative-approved-success"
+msgstr "✅ Creative approved successfully!"
+
+#: handlers/ads.py:xxx
+msgid "creative-rejected-success"
+msgstr "❌ Creative rejected. Reason: {reason}"
+
+#: handlers/ads.py:xxx
+msgid "creative-not-found"
+msgstr "Creative not found."
+
+#: handlers/ads.py:xxx
+msgid "moderation-error"
+msgstr "Error during creative moderation."
+
+#: handlers/ads.py:xxx
+msgid "select-rejection-reason"
+msgstr "Select rejection reason:"
+
+#: handlers/ads.py:xxx
+msgid "enter-custom-reason"
+msgstr "Enter rejection reason:"
+
+#: handlers/ads.py:xxx
+msgid "reason-inappropriate"
+msgstr "Inappropriate content"
+
+#: handlers/ads.py:xxx
+msgid "reason-misleading"
+msgstr "Misleading information"
+
+#: handlers/ads.py:xxx
+msgid "reason-quality"
+msgstr "Poor quality"
+
+#: handlers/ads.py:xxx
+msgid "reason-policy"
+msgstr "Policy violation"
+
+msgid "my-balance"
+msgstr "💰 My Balance"
+
+msgid "moderate-ads"
+msgstr "🔍 Moderate Ads"
+
+msgid "one-week"
+msgstr "📅 One Week"
+
+msgid "one-month"
+msgstr "📅 One Month"
+
+msgid "error-occurred"
+msgstr "❌ An error occurred"

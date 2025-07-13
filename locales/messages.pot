@@ -1,0 +1,680 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-07-11 23:31+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: handlers/admins.py:24 handlers/admins.py:30
+msgid "admin-welcome-message"
+msgstr ""
+
+#: handlers/captcha.py:54 handlers/captcha.py:190 handlers/captcha.py:230
+#: handlers/captcha.py:280
+msgid "captcha-settings-menu"
+msgstr ""
+
+#: handlers/captcha.py:93 handlers/captcha.py:234
+msgid "setting-updated"
+msgstr ""
+
+#: handlers/captcha.py:100
+msgid "select-captcha-type"
+msgstr ""
+
+#: handlers/captcha.py:110
+msgid "select-captcha-size"
+msgstr ""
+
+#: handlers/captcha.py:120
+msgid "select-captcha-difficulty"
+msgstr ""
+
+#: handlers/captcha.py:129
+msgid "select-captcha-chars-mode"
+msgstr ""
+
+#: handlers/captcha.py:138 handlers/captcha.py:147
+msgid "enter-new-value"
+msgstr ""
+
+#: handlers/captcha.py:165 handlers/captcha.py:213
+msgid "invalid-numeric-value"
+msgstr ""
+
+#: handlers/captcha.py:252
+msgid "error-generating-captcha"
+msgstr ""
+
+#: handlers/captcha.py:260
+msgid "captcha-preview-caption"
+msgstr ""
+
+#: handlers/filters.py:30
+msgid "select_group"
+msgstr ""
+
+#: handlers/filters.py:45
+msgid "no-filters-found"
+msgstr ""
+
+#: handlers/filters.py:54 handlers/filters.py:81 handlers/filters.py:156
+msgid "unknown-group"
+msgstr ""
+
+#: handlers/filters.py:57
+msgid "filters-for-group"
+msgstr ""
+
+#: handlers/filters.py:84 handlers/filters.py:160
+msgid "filter-updated-success"
+msgstr ""
+
+#: handlers/filters.py:90 keyboards/filters.py:58
+msgid "filter-max-message-length"
+msgstr ""
+
+#: handlers/filters.py:91
+msgid "filter-bonus-per-user"
+msgstr ""
+
+#: handlers/filters.py:92
+msgid "filter-bonus-checkpoint"
+msgstr ""
+
+#: handlers/filters.py:104
+msgid "enter-value"
+msgstr ""
+
+#: handlers/filters.py:130
+msgid "invalid-message-length-range"
+msgstr ""
+
+#: handlers/filters.py:134
+msgid "invalid-bonus-per-user-range"
+msgstr ""
+
+#: handlers/filters.py:138
+msgid "invalid-bonus-checkpoint-range"
+msgstr ""
+
+#: handlers/filters.py:167
+msgid "invalid-number-format"
+msgstr ""
+
+#: handlers/filters.py:174
+msgid "filter-update-error"
+msgstr ""
+
+#: handlers/groups.py:39
+msgid "error-getting-groups"
+msgstr ""
+
+#: handlers/groups.py:49
+msgid "groups-list-empty"
+msgstr ""
+
+#: handlers/groups.py:53
+msgid "all-groups-header"
+msgstr ""
+
+#: handlers/groups.py:71
+msgid "add-group-instructions"
+msgstr ""
+
+#: handlers/groups.py:86
+msgid "invalid-group-format"
+msgstr ""
+
+#: handlers/groups.py:94
+msgid "getting-group-info"
+msgstr ""
+
+#: handlers/groups.py:103
+msgid "getting-admins-list"
+msgstr ""
+
+#: handlers/groups.py:115
+msgid "saving-to-database"
+msgstr ""
+
+#: handlers/groups.py:151 handlers/groups.py:240
+msgid "no-username"
+msgstr ""
+
+#: handlers/groups.py:152
+msgid "group-added-success"
+msgstr ""
+
+#: handlers/groups.py:175
+msgid "error-chat-not-found"
+msgstr ""
+
+#: handlers/groups.py:177
+msgid "error-bot-not-member"
+msgstr ""
+
+#: handlers/groups.py:179
+msgid "error-insufficient-rights"
+msgstr ""
+
+#: handlers/groups.py:181
+msgid "error-adding-group"
+msgstr ""
+
+#: handlers/groups.py:209
+msgid "error-group-not-found"
+msgstr ""
+
+#: handlers/groups.py:211
+msgid "error-insufficient-permissions"
+msgstr ""
+
+#: handlers/groups.py:213
+msgid "error-cannot-remove-related-data"
+msgstr ""
+
+#: handlers/groups.py:215
+msgid "error-removing-group"
+msgstr ""
+
+#: handlers/groups.py:235
+msgid "group-not-found"
+msgstr ""
+
+#: handlers/groups.py:245
+msgid "failed-to-remove-group"
+msgstr ""
+
+#: handlers/groups.py:252
+msgid "group-removed-success"
+msgstr ""
+
+#: handlers/language.py:24 handlers/language.py:36
+msgid "choose-language"
+msgstr ""
+
+#: handlers/language.py:64
+msgid "language-changed"
+msgstr ""
+
+#: handlers/users.py:15
+msgid "welcome-message"
+msgstr ""
+
+#: keyboards/buttons.py:28 keyboards/buttons.py:56 keyboards/buttons.py:70
+msgid "back-to-menu"
+msgstr ""
+
+#: keyboards/buttons.py:35
+msgid "change-language"
+msgstr ""
+
+#: keyboards/buttons.py:42
+msgid "ad-menu"
+msgstr ""
+
+#: keyboards/buttons.py:49
+msgid "add-group"
+msgstr ""
+
+#: keyboards/buttons.py:63
+msgid "my-groups"
+msgstr ""
+
+#: keyboards/buttons.py:77
+msgid "filters-menu"
+msgstr ""
+
+#: keyboards/captcha.py:27
+msgid "captcha-type"
+msgstr ""
+
+#: keyboards/captcha.py:33
+msgid "captcha-size"
+msgstr ""
+
+#: keyboards/captcha.py:54
+msgid "captcha-difficulty"
+msgstr ""
+
+#: keyboards/captcha.py:58 keyboards/captcha.py:250
+msgid "easy"
+msgstr ""
+
+#: keyboards/captcha.py:59 keyboards/captcha.py:251
+msgid "light"
+msgstr ""
+
+#: keyboards/captcha.py:60 keyboards/captcha.py:252
+msgid "medium"
+msgstr ""
+
+#: keyboards/captcha.py:61 keyboards/captcha.py:253
+msgid "hard"
+msgstr ""
+
+#: keyboards/captcha.py:62 keyboards/captcha.py:254
+msgid "expert"
+msgstr ""
+
+#: keyboards/captcha.py:63 keyboards/captcha.py:255
+msgid "nightmare"
+msgstr ""
+
+#: keyboards/captcha.py:68
+msgid "captcha-chars-mode"
+msgstr ""
+
+#: keyboards/captcha.py:70 keyboards/captcha.py:289
+msgid "nums"
+msgstr ""
+
+#: keyboards/captcha.py:70 keyboards/captcha.py:290
+msgid "hex"
+msgstr ""
+
+#: keyboards/captcha.py:70 keyboards/captcha.py:291
+msgid "ascii"
+msgstr ""
+
+#: keyboards/captcha.py:74
+msgid "captcha-multicolor"
+msgstr ""
+
+#: keyboards/captcha.py:79
+msgid "captcha-margin"
+msgstr ""
+
+#: keyboards/captcha.py:84
+msgid "captcha-multiplication"
+msgstr ""
+
+#: keyboards/captcha.py:89
+msgid "captcha-timeout"
+msgstr ""
+
+#: keyboards/captcha.py:94
+msgid "captcha-max-attempts"
+msgstr ""
+
+#: keyboards/captcha.py:99
+msgid "captcha-auto-kick"
+msgstr ""
+
+#: keyboards/captcha.py:147
+msgid "preview-captcha"
+msgstr ""
+
+#: keyboards/captcha.py:156
+msgid "back-to-filters"
+msgstr ""
+
+#: keyboards/captcha.py:170
+msgid "captcha-type-standard"
+msgstr ""
+
+#: keyboards/captcha.py:171
+msgid "captcha-type-math"
+msgstr ""
+
+#: keyboards/captcha.py:190 keyboards/captcha.py:236 keyboards/captcha.py:274
+#: keyboards/captcha.py:310 keyboards/captcha.py:324 keyboards/filters.py:138
+msgid "back"
+msgstr ""
+
+#: keyboards/filters.py:50
+msgid "filter-hashtag"
+msgstr ""
+
+#: keyboards/filters.py:51
+msgid "filter-url"
+msgstr ""
+
+#: keyboards/filters.py:52
+msgid "filter-email"
+msgstr ""
+
+#: keyboards/filters.py:53
+msgid "filter-ads"
+msgstr ""
+
+#: keyboards/filters.py:54
+msgid "filter-phone-number"
+msgstr ""
+
+#: keyboards/filters.py:55
+msgid "filter-forbidden-words"
+msgstr ""
+
+#: keyboards/filters.py:56
+msgid "filter-track-members"
+msgstr ""
+
+#: keyboards/filters.py:57
+msgid "filter-captcha"
+msgstr ""
+
+#: keyboards/filters.py:82
+msgid "captcha-settings"
+msgstr ""
+
+#: keyboards/filters.py:91
+msgid "filter-bonuses-enabled"
+msgstr ""
+
+#: keyboards/filters.py:125
+msgid "back-to-groups"
+msgstr ""
+
+# Advertiser messages
+msgid "advertiser-not-found"
+msgstr ""
+
+msgid "advertiser-menu"
+msgstr ""
+
+msgid "no-campaigns"
+msgstr ""
+
+msgid "my-campaigns-header"
+msgstr ""
+
+msgid "campaign-info"
+msgstr ""
+
+msgid "campaign-not-found"
+msgstr ""
+
+msgid "campaign-details"
+msgstr ""
+
+# Campaign creation messages
+msgid "create-campaign-enter-name"
+msgstr ""
+
+msgid "campaign-name-too-short"
+msgstr ""
+
+msgid "campaign-name-too-long"
+msgstr ""
+
+msgid "create-campaign-enter-budget"
+msgstr ""
+
+msgid "budget-must-be-positive"
+msgstr ""
+
+msgid "budget-too-large"
+msgstr ""
+
+msgid "invalid-budget-format"
+msgstr ""
+
+msgid "create-campaign-enter-start-date"
+msgstr ""
+
+msgid "start-date-in-past"
+msgstr ""
+
+msgid "invalid-date-format"
+msgstr ""
+
+msgid "create-campaign-enter-end-date"
+msgstr ""
+
+msgid "end-date-before-start"
+msgstr ""
+
+msgid "create-campaign-confirmation"
+msgstr ""
+
+msgid "campaign-created-success"
+msgstr ""
+
+msgid "campaign-creation-error"
+msgstr ""
+
+msgid "campaign-creation-cancelled"
+msgstr ""
+
+# Campaign statuses
+msgid "status-draft"
+msgstr ""
+
+msgid "status-active"
+msgstr ""
+
+msgid "status-paused"
+msgstr ""
+
+msgid "status-completed"
+msgstr ""
+
+msgid "status-cancelled"
+msgstr ""
+
+# Keyboard buttons
+msgid "my-campaigns"
+msgstr ""
+
+msgid "create-campaign"
+msgstr ""
+
+msgid "ad-analytics"
+msgstr ""
+
+msgid "back-to-ad-menu"
+msgstr ""
+
+msgid "campaign-analytics"
+msgstr ""
+
+msgid "show-more-campaigns"
+msgstr ""
+
+msgid "activate-campaign"
+msgstr ""
+
+msgid "pause-campaign"
+msgstr ""
+
+msgid "resume-campaign"
+msgstr ""
+
+msgid "edit-campaign"
+msgstr ""
+
+msgid "campaign-creatives"
+msgstr ""
+
+msgid "back-to-campaigns"
+msgstr ""
+
+msgid "cancel"
+msgstr ""
+
+msgid "start-now"
+msgstr ""
+
+msgid "start-later"
+msgstr ""
+
+msgid "end-one-week"
+msgstr ""
+
+msgid "end-one-month"
+msgstr ""
+
+msgid "end-custom"
+msgstr ""
+
+msgid "confirm-create"
+msgstr ""
+
+msgid "view-campaign"
+msgstr ""
+
+# Admin messages
+msgid "admin-ad-menu"
+msgstr ""
+
+msgid "admin-advertiser-approved"
+msgstr ""
+
+msgid "admin-advertiser-rejected"
+msgstr ""
+
+msgid "approve-creative"
+msgstr ""
+
+msgid "back-to-queue"
+msgstr ""
+
+msgid "creative-approved-success"
+msgstr ""
+
+msgid "creative-advertiser"
+msgstr ""
+
+msgid "creative-campaign"
+msgstr ""
+
+msgid "creative-created"
+msgstr ""
+
+msgid "creative-details-header"
+msgstr ""
+
+msgid "creative-not-found"
+msgstr ""
+
+msgid "creative-rejected-success"
+msgstr ""
+
+msgid "creative-type"
+msgstr ""
+
+msgid "custom-reason"
+msgstr ""
+
+msgid "enter-custom-reason"
+msgstr ""
+
+msgid "moderation-error"
+msgstr ""
+
+msgid "moderation-queue-header"
+msgstr ""
+
+msgid "next-page"
+msgstr ""
+
+msgid "no-creatives-pending"
+msgstr ""
+
+msgid "prev-page"
+msgstr ""
+
+msgid "reason-inappropriate"
+msgstr ""
+
+msgid "reason-misleading"
+msgstr ""
+
+msgid "reason-policy"
+msgstr ""
+
+msgid "reason-quality"
+msgstr ""
+
+msgid "reject-creative"
+msgstr ""
+
+msgid "select-rejection-reason"
+msgstr ""
+
+msgid "all-campaigns"
+msgstr ""
+
+msgid "advertiser-management"
+msgstr ""
+
+msgid "ad-analytics-admin"
+msgstr ""
+
+msgid "rejection_reason_custom"
+msgstr ""
+
+msgid "rejection_reason_prompt"
+msgstr ""
+
+msgid "all_campaigns_title"
+msgstr ""
+
+msgid "all_campaigns_total"
+msgstr ""
+
+msgid "all_campaigns_page"
+msgstr ""
+
+msgid "no-campaigns-found"
+msgstr ""
+
+msgid "advertisers-management-title"
+msgstr ""
+
+msgid "total-advertisers"
+msgstr ""
+
+msgid "advertisers-page-info"
+msgstr ""
+
+msgid "no-advertisers-found"
+msgstr ""
+
+msgid "advertiser_details"
+msgstr ""
+
+msgid "edit_advertiser_balance"
+msgstr ""
+
+msgid "view_advertiser_campaigns"
+msgstr ""
+
+msgid "block_advertiser"
+msgstr ""
+
+msgid "back_to_advertisers"
+msgstr ""
+
+msgid "advertiser_not_found"
+msgstr ""
+
+msgid "my-balance"
+msgstr ""
+
+msgid "moderate-ads"
+msgstr ""
+
+msgid "one-week"
+msgstr ""
+
+msgid "one-month"
+msgstr ""
+
+msgid "error-occurred"
+msgstr ""
+
